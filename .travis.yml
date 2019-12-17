@@ -1,15 +1,18 @@
-dist: trusty
-language: node_js
-node_js:
-  - "stable"
-before_script:
-  - npm install
-script:
-  - npm run build
-deploy:
-  provider: surge
-  project: ./dist/
-  domain: https://kontent-sample-app-vue.surge.sh
-  skip_cleanup: true
+language: javascript
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version version-number
+  - export PATH="$HOME/.yarn/bin:$PATH"
+
 cache:
   yarn: true
+
+notifications:
+  email:
+    recipients:
+      - sarpe36@gmail.com
+      - arina.ignatiuc@ee.utm.md
+      - maria.buftea@ee.utm.md
+      - carolina.ciocanu@ati.utm.md
+    on_success: always # default: change
+    on_failure: always # default: always
